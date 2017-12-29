@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\test\Storm.Test\Storm.Test.csproj" />
     <ProjectReference Include="..\Storm.Sql\Storm.Sql.csproj" />
     <ProjectReference Include="..\Storm.Core\Storm.Core.csproj" />
     <ProjectReference Include="..\..\test\Storm.Test.Models\Storm.Test.Models.csproj" />

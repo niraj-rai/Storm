@@ -15,8 +15,10 @@ namespace Storm.Test.Models
 
         public DateTime? DateOrBirth { get; set; }
 
+        public decimal? Salary { get; set; }
+
         public bool IsActive { get; set; }
 
-        public decimal Salary { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

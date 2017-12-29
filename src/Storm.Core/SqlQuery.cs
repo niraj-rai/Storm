@@ -10,7 +10,7 @@ namespace Storm.Core
     #region SqlQueries
     public abstract class SqlQuery<T> : ISqlQuery
     {
-        internal List<SqlClause> Clauses { get;  set; }
+        internal List<SqlClause> Clauses { get; set; }
         public List<IDbDataParameter> Parameters { get; protected set; }
 
         public SqlQuery()
@@ -43,28 +43,28 @@ namespace Storm.Core
         public SqlSelectQuery<T> Select(Expression<Func<T, object>> columns)
         {
             _selectClauseTable = typeof(T).Name;
-            Clauses.Add(new SqlSelectClause<T>(columns));
+            Clauses.Add(new SqlSelectClause<T>(columns, _selectClauseTable));
             return this;
         }
 
         public SqlSelectQuery<T> Select(string columns)
         {
             _selectClauseTable = typeof(T).Name;
-            var exp = Expression.Constant(columns);
-            Clauses.Add(new SqlSelectClause<T>(exp));
-            return this;
+            return Select(columns, _selectClauseTable);
         }
 
         public SqlSelectQuery<T> Select(string columns, string from)
         {
-            _selectClauseTable = from;
+            //_selectClauseTable = from;
+            if (string.IsNullOrWhiteSpace(columns)) columns = "*";
             var exp = Expression.Constant(columns);
-            Clauses.Add(new SqlSelectClause<T>(exp));
+            Clauses.Add(new SqlSelectClause<T>(exp, from));
             return this;
         }
 
         public SqlSelectQuery<T> Where(string predicate)
         {
+            if (predicate == null) return this;
             var exp = Expression.Constant(predicate);
             var clause = new SqlWhereClause(exp as Expression);
             Clauses.Add(clause);
@@ -73,6 +73,7 @@ namespace Storm.Core
 
         public SqlSelectQuery<T> Where(Expression<Func<T, bool>> predicate)
         {
+            if (predicate == null) return this;
             var clause = new SqlWhereClause(predicate);
             Clauses.Add(clause);
             return this;
@@ -80,6 +81,7 @@ namespace Storm.Core
 
         public SqlSelectQuery<T> GroupBy(string columns)
         {
+            if (columns == null) return this;
             var exp = Expression.Constant(columns);
             var clause = new SqlGroupByClause(exp);
             Clauses.Add(clause);
@@ -88,6 +90,7 @@ namespace Storm.Core
 
         public SqlSelectQuery<T> GroupBy(Expression<Func<T, object>> columns)
         {
+            if (columns == null) return this;
             var clause = new SqlGroupByClause(columns);
             Clauses.Add(clause);
             return this;
@@ -95,6 +98,7 @@ namespace Storm.Core
 
         public SqlSelectQuery<T> Having(Expression<Func<T, object>> predicate)
         {
+            if (predicate == null) return this;
             var clause = new SqlHavingClause(predicate);
             Clauses.Add(clause);
             return this;
@@ -102,6 +106,7 @@ namespace Storm.Core
 
         public SqlSelectQuery<T> Having(string predicate)
         {
+            if (predicate == null) return this;
             var exp = Expression.Constant(predicate);
             var clause = new SqlHavingClause(exp);
             Clauses.Add(clause);
@@ -110,6 +115,7 @@ namespace Storm.Core
 
         public SqlSelectQuery<T> OrderBy(Expression<Func<T, object>> columns)
         {
+            if (columns == null) return this;
             var clause = new SqlOrderByClause(columns);
             Clauses.Add(clause);
             return this;
@@ -117,6 +123,7 @@ namespace Storm.Core
 
         public SqlSelectQuery<T> OrderBy(string columns)
         {
+            if (columns == null) return this;
             var exp = Expression.Constant(columns);
             var clause = new SqlOrderByClause(exp);
             Clauses.Add(clause);
@@ -161,8 +168,10 @@ namespace Storm.Core
                     strSql.Append($" {having}");
             }
 
-            if (orderBy != null)
-                strSql.Append($" {orderBy}");
+            if (orderBy == null)
+                orderBy = new SqlOrderByClause(Expression.Constant(1));
+
+            strSql.Append($" {orderBy}");
 
             if (offset != null)
             {
@@ -297,9 +306,9 @@ namespace Storm.Core
         private string _selectClause;
         private string _tableName;
         protected override string ClauseToken => "SELECT";
-        public SqlSelectClause(Expression exp)
+        public SqlSelectClause(Expression exp, string from = null)
         {
-            _tableName = typeof(T).GetType().Name;
+            _tableName = from ?? typeof(T).GetType().Name;
             _selectClause = exp.Evaluate()?.ToString();
             _selectColumns = _selectClause?.Split(',')?.Select(c => c.Trim()).ToList();
         }

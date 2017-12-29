@@ -88,6 +88,8 @@ namespace Storm.Sql
             var sql = new SqlSelectQuery<T>();
             sql = sql.Select(columns)
                 .Where(where)
+                .GroupBy(groupBy)
+                .Having(having)
                 .OrderBy(orderBy)
                 .Skip(rowsOffet)
                 .Take(pageSize);

@@ -7,15 +7,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{72AE9F0B-F0D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{918C9516-5AE5-4E1A-A400-8131357ADFD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storm.Core", "src\Storm.Core\Storm.Core.csproj", "{0E2BFAEC-73F0-466A-A94F-9859781572AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storm.Core", "src\Storm.Core\Storm.Core.csproj", "{0E2BFAEC-73F0-466A-A94F-9859781572AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storm.Sql", "src\Storm.Sql\Storm.Sql.csproj", "{7D5B2007-834A-46F1-88A6-BEDCE457B794}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storm.Sql", "src\Storm.Sql\Storm.Sql.csproj", "{7D5B2007-834A-46F1-88A6-BEDCE457B794}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storm.Console", "src\Storm.Console\Storm.Console.csproj", "{DD3EA538-446C-415C-8509-C869A789C4E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storm.Console", "src\Storm.Console\Storm.Console.csproj", "{DD3EA538-446C-415C-8509-C869A789C4E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storm.Test", "test\Storm.Test\Storm.Test.csproj", "{0BA06937-E968-4C9F-8ADD-DE6F2B1AED46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storm.Test", "test\Storm.Test\Storm.Test.csproj", "{0BA06937-E968-4C9F-8ADD-DE6F2B1AED46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storm.Test.Models", "test\Storm.Test.Models\Storm.Test.Models.csproj", "{7B7A1E45-4DBE-475D-9A92-E078FAA3113F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storm.Test.Models", "test\Storm.Test.Models\Storm.Test.Models.csproj", "{7B7A1E45-4DBE-475D-9A92-E078FAA3113F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseScripts", "DatabaseScripts", "{2AACF82F-21E4-4DA1-8E55-D9EEB9327870}"
+	ProjectSection(SolutionItems) = preProject
+		sql_script\Storm_Test_Db_Schema.sql = sql_script\Storm_Test_Db_Schema.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,14 +52,14 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BB8D4950-C2A8-4956-B8B9-722E88C0B679}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0E2BFAEC-73F0-466A-A94F-9859781572AB} = {72AE9F0B-F0D5-4757-B7FD-DDD20DAF30C5}
 		{7D5B2007-834A-46F1-88A6-BEDCE457B794} = {72AE9F0B-F0D5-4757-B7FD-DDD20DAF30C5}
 		{DD3EA538-446C-415C-8509-C869A789C4E7} = {72AE9F0B-F0D5-4757-B7FD-DDD20DAF30C5}
 		{0BA06937-E968-4C9F-8ADD-DE6F2B1AED46} = {918C9516-5AE5-4E1A-A400-8131357ADFD4}
 		{7B7A1E45-4DBE-475D-9A92-E078FAA3113F} = {918C9516-5AE5-4E1A-A400-8131357ADFD4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB8D4950-C2A8-4956-B8B9-722E88C0B679}
 	EndGlobalSection
 EndGlobal

@@ -24,7 +24,7 @@ namespace Storm.Test
         [Fact]
         public void Select_Test_1()
         {
-            var result = _context.Select("*", from: "selectColumnDefinition");
+            var result = _context.Select("*", from: "employee");
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace Storm.Test
             var result = _context.Select<Employee>(
                 columns: (o) => new { o.FirstName, o.LastName, BirthDate = o.DateOrBirth, o.Salary, Value = 10 },
                 where: (o) => o.FirstName == "Niraj" && o.IsActive == true,
-                orderBy: (o) => o.Salary,
+                orderBy: (o) => new { o.Salary },
                 pageIndex: 2,
                 pageSize: 20);
         }
