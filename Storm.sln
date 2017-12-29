@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storm.Test.Models", "test\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseScripts", "DatabaseScripts", "{2AACF82F-21E4-4DA1-8E55-D9EEB9327870}"
 	ProjectSection(SolutionItems) = preProject
-		sql_script\Storm_Test_Db_Schema.sql = sql_script\Storm_Test_Db_Schema.sql
+		DatabaseScripts\Storm_Test_Db_Schema.sql = DatabaseScripts\Storm_Test_Db_Schema.sql
 	EndProjectSection
 EndProject
 Global

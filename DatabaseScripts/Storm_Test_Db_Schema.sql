@@ -1,16 +1,25 @@
---------------------------
+--===========================
 -- Storm_Test_Db Schema
--------------------------- 
-CREATE DATABASE Storm_Test_Db;
-
+-- Created By: Niraj Rai
+-- Created On: 28-12-2017
+--=========================== 
+-----------------------------
+-- Storm_Test_Db Database
+-----------------------------
+DROP DATABASE IF EXISTS [Storm_Test_Db]
+GO;
+CREATE DATABASE [Storm_Test_Db];
 GO;
 
-USE Storm_Test_Db;
-
+USE [Storm_Test_Db];
 GO;
 
+-----------------------------
 -- employee table schema
-CREATE TABLE employee
+-----------------------------
+DROP TABLE IF EXISTS [employee]
+GO;
+CREATE TABLE [employee]
 (
     employee_id bigint IDENTITY(1,1) PRIMARY KEY,
     first_name nvarchar(100) null,
