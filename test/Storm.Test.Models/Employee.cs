@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Storm.Core.Attributes;
+using System;
 
 namespace Storm.Test.Models
 {
@@ -7,7 +8,8 @@ namespace Storm.Test.Models
     /// </summary>
     public class Employee
     {
-        public long Id { get; set; }
+        [Key]
+        public long EmployeeId { get; set; }
 
         public string FirstName { get; set; }
 

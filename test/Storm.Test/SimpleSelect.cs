@@ -55,5 +55,11 @@ namespace Storm.Test
         {
             var result = _context.Select("firstName, lastName", "Employee", "firtName like '%Niraj'");
         }
+
+        [Fact]
+        public void Select_Test_6()
+        {
+            var result = _context.Select<Employee>(columns: (o) => new { o.FirstName, o.LastName, BirthDate = o.DateOrBirth, o.Salary, Value = 10 }, id: 10); 
+        }
     }
 }

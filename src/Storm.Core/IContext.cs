@@ -35,7 +35,7 @@ namespace Storm.Core
 
         IEnumerable<T> Select<T>(Expression<Func<T, object>> columns, Expression<Func<T, bool>> where=null, Expression<Func<T, object>> groupBy=null, Expression<Func<T, object>> having= null, Expression<Func<T, object>> orderBy = null, int pageIndex=1, int pageSize=40) where T : class;
 
-        T Select<T>(Expression<Func<T, object>> columns, object Id) where T : class;
+        T Select<T>(Expression<Func<T, object>> columns, object id) where T : class;
 
         void SelectInto<TSource, TTarget>(Expression<Func<TSource, object>> columns) where TSource : class where TTarget : class;
         #endregion
@@ -49,9 +49,9 @@ namespace Storm.Core
         #endregion
 
         #region Update Methods
-        T Update<T>(T obj, object Id);
+        T Update<T>(T obj, object id);
 
-        T Update<T>(Expression<Func<T, object>> columns, object Id);
+        T Update<T>(Expression<Func<T, object>> columns, object id);
 
         void Update<T>(T obj, Expression<Func<T, bool>> where);
 
@@ -59,7 +59,7 @@ namespace Storm.Core
         #endregion
 
         #region Delete Methods
-        void Delete<T>(object Id);
+        void Delete<T>(object id);
         void Delete<T>();
         void Truncate<T>();
         #endregion

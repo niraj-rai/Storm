@@ -32,6 +32,7 @@ namespace Storm.Console
             simpleSelectTest.Select_Test_3();
             simpleSelectTest.Select_Test_4();
             simpleSelectTest.Select_Test_5();
+            simpleSelectTest.Select_Test_6();
             #endregion
         }
     }
