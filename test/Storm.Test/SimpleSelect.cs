@@ -53,7 +53,7 @@ namespace Storm.Test
         [Fact]
         public void Select_Test_5()
         {
-            var result = _context.Select("firstName, lastName", "Employee", "firtName like '%Niraj'");
+            var result = _context.Select(columns:"firstName, lastName", from:"Employee", where:"firstName like '%Niraj'");
         }
 
         [Fact]

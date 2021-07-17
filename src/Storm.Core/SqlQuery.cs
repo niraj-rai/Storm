@@ -201,8 +201,8 @@ namespace Storm.Core
         {
             _insertClauseTable = typeof(T).Name;
             InsertColumnsWithValue = columnsWithValue.ToList();
-            var insertCluase = $"({ string.Join(", ", InsertColumnsWithValue.Select(c => $"[{c.column}]"))}) VALUES({ string.Join(", ", InsertColumnsWithValue.Select(c => $"'{c.value}'"))})";
-            var exp = Expression.Constant(insertCluase);
+            var insertClause = $"({ string.Join(", ", InsertColumnsWithValue.Select(c => $"[{c.column}]"))}) VALUES({ string.Join(", ", InsertColumnsWithValue.Select(c => $"'{c.value}'"))})";
+            var exp = Expression.Constant(insertClause);
             var clause = new SqlInsertClause<T>(exp as Expression);
             Clauses.Add(clause);
             return this;
@@ -260,10 +260,10 @@ namespace Storm.Core
             return this;
         }
 
-        public SqlUpdateQuery<T> Where(string whereCluase)
+        public SqlUpdateQuery<T> Where(string whereClause)
         {
             _updateClauseTable = typeof(T).Name;
-            _updateWhereClause = whereCluase;
+            _updateWhereClause = whereClause;
             return this;
         }
 
